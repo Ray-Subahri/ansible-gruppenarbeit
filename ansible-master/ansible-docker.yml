@@ -61,3 +61,20 @@ tasks:
     docker_container:
       name: ansible-nginx-loadbalancer
       restart: yes
+
+      # stop and remove containers and loadbalancer
+  - name: Stop nginx containers
+    docker_container:
+      name: ansible-nginx{{ item }}
+      state: absent
+    with_sequence: count=2
+
+  - name: Stop loadbalancer
+    docker_container:
+      name: ansible-nginx-loadbalancer
+      state: absent
+
+  - name: remove network
+    docker_network:
+      state: absent
+      name: network_loadbalancer

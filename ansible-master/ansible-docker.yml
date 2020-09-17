@@ -26,14 +26,14 @@ tasks:
       name: ansible-nginx1
       image: nginx
       volumes:
-        - "/home/sebastian/gitrepos/ansible-projects/ansible-springboot/app1/:/usr/share/nginx/html"
+        - "app1/:/usr/share/nginx/html"
 
   - name: create nginx2 container with webapp
     docker_container:
       name: ansible-nginx2
       image: nginx
       volumes:
-        - "/home/sebastian/gitrepos/ansible-projects/ansible-springboot/app2/:/usr/share/nginx/html"
+        - "app2/:/usr/share/nginx/html"
 
 # add container to network
   - name: Add a nginx1 container to network
